@@ -1,8 +1,21 @@
-header
-  nav
-    - if player_signed_in?
-      = link_to 'ログアウト', destroy_player_session_path, method: :delete
-    - else
-      = link_to 'サインアップ', new_player_registration_path
-      br
-      = link_to 'ログイン', new_player_session_path
+nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+  = link_to 'Futsalon', root_path, class: "navbar-brand"
+  button.navbar-toggler type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation"
+    span.navbar-toggler-icon
+
+  div.collapse.navbar-collapse#navbarsExampleDefault
+    ul.navbar-nav.mr-auto
+      - if player_signed_in?
+        li.nav-item.active
+          = link_to 'ログアウト', destroy_player_session_path, method: :delete
+      - elsif field_signed_in?
+        li.nav-item.active
+          = link_to 'ログアウト', destroy_field_session_path, method: :delete
+      - elsif tournament_company_signed_in?
+        li.nav-item.active
+          = link_to 'ログアウト', destroy_tournament_company_session_path, method: :delete
+      - else
+        li.nav-item.active
+          = link_to 'サインアップ', new_player_registration_path
+        li.nav-item.active
+          = link_to 'ログイン', new_player_session_path

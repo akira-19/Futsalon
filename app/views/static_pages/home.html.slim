@@ -1,4 +1,8 @@
 - if player_signed_in?
 	= render 'players/shared/main_player'
+- elsif field_signed_in?
+	= render 'fields/shared/field_home'
+- elsif tournament_company_signed_in?
+	= render 'tournament_companies/shared/tournament_company_home'
 - else
   = render 'shared/main_homepage'

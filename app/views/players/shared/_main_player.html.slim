@@ -1,4 +1,8 @@
 ul
-  li = link_to "team status", team_path
-  li = link_to "大会を探す", tournament_path
-  li = link_to "コートを予約", field_path
+  li = link_to "大会を探す", tournaments_path
+  li = link_to "コートを予約", fields_path
+  li = link_to "チームの作成", new_team_path
+
+ul
+  - @teams.each do |team|
+    li = link_to "#{team.name}", team_path(team)

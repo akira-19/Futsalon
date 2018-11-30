@@ -1,3 +1,7 @@
-ul
-  li = link_to 'フィールド管理者としてログイン', new_field_session_path
-  li = link_to '大会管理者としてログイン', new_tournament_company_session_path
+footer.text-muted.bg-secondary
+  div.container
+    p
+      = link_to 'Top', root_path, class: "text-white"
+    ul
+      li = link_to 'フィールド管理者としてログイン', new_field_session_path, class: "text-white"
+      li = link_to '大会管理者としてログイン', new_tournament_company_session_path, class: "text-white"
