@@ -1,0 +1,9 @@
+div.container.mt-3
+  div.row
+    div.col-sm-6.offset-sm-3
+      = form_with(url: search_path, method: :get, local: true) do |form|
+        = form.label :"チーム名で検索" ,class: ""
+        = form.text_field :team_name
+        = form.submit :search, class: "btn btn-primary"
+
+= render 'static_pages/search_result'

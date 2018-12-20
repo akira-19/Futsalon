@@ -6,18 +6,8 @@ class FieldsController < ApplicationController
   def show
   end
 
-  def new
-  end
-
-  def create
-  end
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
+  def search
+    @fields = Field.where(prefecture: params[:prefecture])
+    render :index
   end
 end

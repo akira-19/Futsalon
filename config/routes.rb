@@ -2,7 +2,10 @@
 
 Rails.application.routes.draw do
 
+  get 'players/team_register'
+
   root 'static_pages#home'
+  get '/search', to: 'static_pages#search'
 
   devise_for :players, controllers: {
     sessions: 'players/sessions',
@@ -16,7 +19,11 @@ Rails.application.routes.draw do
     passwords: 'fields/passwords',
     registrations: 'fields/registrations'
   }
-  resources :fields
+  resources :fields, only: %i[index show] do
+    collection do
+      get :search, :prefecture
+    end
+  end
 
 
   devise_for :tournament_companies, controllers: {
@@ -32,12 +39,13 @@ Rails.application.routes.draw do
   get '/players', to: 'static_pages#home'
 
   resources :teams, only: %i[new create edit update destroy show]
+
+  resources :play_fors, only: %i[new create edit update destroy]
+
   resources :tournaments do
     collection do
       get :search, :prefecture
     end
   end
   resources :booking_fields
-
-  resources :teams, only: [:show]
 end

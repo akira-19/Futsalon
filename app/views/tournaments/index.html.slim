@@ -1,1 +1,31 @@
-p building now...
+p 検索ウィンドウ
+p 複数条件
+p 地域
+
+= form_with(url: search_tournaments_path, method: :get, local: true) do |form|
+  = form.label :"都道府県"
+  = form.collection_select :prefecture, Field.group(:prefecture).order(id: :desc), :prefecture, :prefecture, {prompt: ""}
+  = form.label :"日付"
+  = form.date_field :date, value: Time.now.strftime("%Y-%m-%d")
+  = form.submit :search
+
+
+
+
+
+- if @tournaments
+  - @tournaments.each do |t|
+    div style="border-style: solid"
+      p = "大会名：#{t.name}"
+      p = "開始日時：#{t.start_time}"
+      p = "終了日時：#{t.end_time}"
+      p = "コート名：#{Field.find_by(id: t.field_id).name}"
+      p = "開催場所：#{Field.find_by(id: t.field_id).prefecture}"
+
+br
+p 北海道・東北
+p 関東
+p 中部
+p 近畿
+p 中国・四国
+p 九州・沖縄

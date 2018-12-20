@@ -9,3 +9,8 @@ table border="1px black solid"
       td = member.name
       td member.number
       td member.position
+
+- if team_admin_player?(current_player.id, params[:id])
+  h2 admin
+- else
+  h2 not_admin

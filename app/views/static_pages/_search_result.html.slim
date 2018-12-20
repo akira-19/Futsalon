@@ -1,0 +1,16 @@
+ul
+  - if @search_teams
+    - @search_teams.each do |team|
+      - if play_for = PlayFor.find_by(player_id: current_player.id, team_id: team.id)
+        li = "#{team.name}"
+        - if play_for.register
+          li
+            button.btn.btn-primary "参加済"
+        - else
+          li
+            button.btn.btn-primary "承認待ち"
+      - else
+        li = "#{team.name}"
+        li = form_with(model: PlayFor.new, local: true) do |f|
+          = hidden_field_tag :team, team.id
+          = f.submit "チーム参加リクエスト", class: "btn btn-primary"

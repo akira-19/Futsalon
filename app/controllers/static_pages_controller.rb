@@ -2,19 +2,19 @@
 class StaticPagesController < ApplicationController
   def home
     if player_signed_in?
-      team_ids = PlayFor.where(player_id: current_player.id).select(:team_id)
+      team_ids = PlayFor.where(player_id: current_player.id).pluck(:team_id)
       @teams = Team.where(id: team_ids)
     end
   end
 
-  def login
+  def search
+    if params[:team_name]
+      @search_teams = Team.where("NAME LIKE ?", "%#{params[:team_name]}%")
+      @requested_teams = PlayFor.where(team_id: @search_teams.map(&:id))
+    end
+    # render :home
   end
 
-  def team
-  end
-
-  def tournament
-  end
 
   def field
   end

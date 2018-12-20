@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181124184535) do
+ActiveRecord::Schema.define(version: 20181218193433) do
 
   create_table "booking_fields", force: :cascade do |t|
     t.integer "team_id", null: false
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(version: 20181124184535) do
     t.integer "team_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "register", default: false, null: false
+    t.boolean "admin", default: false, null: false
     t.index ["player_id"], name: "index_play_fors_on_player_id"
     t.index ["team_id"], name: "index_play_fors_on_team_id"
   end
@@ -103,6 +105,7 @@ ActiveRecord::Schema.define(version: 20181124184535) do
     t.integer "height"
     t.integer "weight"
     t.string "name", default: "", null: false
+    t.integer "default_team_id"
     t.index ["confirmation_token"], name: "index_players_on_confirmation_token", unique: true
     t.index ["email"], name: "index_players_on_email", unique: true
     t.index ["reset_password_token"], name: "index_players_on_reset_password_token", unique: true
@@ -150,6 +153,8 @@ ActiveRecord::Schema.define(version: 20181124184535) do
     t.integer "tounament_company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "level", null: false
+    t.string "name", null: false
     t.index ["field_id"], name: "index_tournaments_on_field_id"
     t.index ["tounament_company_id"], name: "index_tournaments_on_tounament_company_id"
   end

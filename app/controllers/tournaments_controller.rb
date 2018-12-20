@@ -1,7 +1,8 @@
 class TournamentsController < ApplicationController
 
   def index
-    @tournments = Tournament.all
+    @tournaments = Tournament.all
+    # @level = 
   end
 
   def new
@@ -23,6 +24,11 @@ class TournamentsController < ApplicationController
   end
 
   def search
+    fields = params[:prefecture].empty? ? Field.all : Field.where(prefecture: params[:prefecture])
+    date = params[:date].to_date
+    @tournaments = Tournament.where(field_id: fields.pluck(:id))
+                              .where(start_time: date.beginning_of_day .. date.end_of_day )
+    render :index
   end
 
   def prefecture

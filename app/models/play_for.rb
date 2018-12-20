@@ -6,4 +6,7 @@ class PlayFor < ApplicationRecord
     validates :player_id
     validates :team_id
   end
+
+
+
 end

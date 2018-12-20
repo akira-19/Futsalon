@@ -12,4 +12,10 @@ class Player < ApplicationRecord
   validates :name, presence: true
   validates :email, presence: true
   validates :encrypted_password, presence: true
+
+  def default_team_id(team_id)
+    self.default_team_id ||= team_id
+    self.save
+  end
+
 end
