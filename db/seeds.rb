@@ -13,6 +13,12 @@ player1 = Player.new(name:  "example1",
              )
 player1.save!
 
+10.times do |num|
+  team = Team.new(name: "team-#{num}",
+                  level: rand(9)+1
+                  )
+  team.save!
+end
 
 
 (1..10).each do |num|
@@ -50,4 +56,17 @@ tournament_company.save!
                               tounament_company_id: 1
              )
   tournament.save!
+end
+
+10.times do
+  start_time = DateTime.new(2019,1,rand(10)+1,rand(15)+7, rand(2)*30, 0)
+  bookfield= BookingField.new(team_id:  rand(9)+1,
+                              field_id: rand(9)+1,
+                              price: 20000,
+                              start_time: start_time,
+                              end_time: start_time.since((rand(2)+1).hours),
+                              confirm: true,
+                              payment_method: 1
+             )
+  bookfield.save!
 end

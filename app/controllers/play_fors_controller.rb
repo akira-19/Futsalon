@@ -13,8 +13,15 @@ class PlayForsController < ApplicationController
   end
 
   def update
+    playfor = PlayFor.find_by(id: params[:id])
+    playfor.register = params[:register]
+    if playfor.save
+      redirect_to root_path
+    end
   end
 
   def destroy
+    playfor = PlayFor.find_by(id: params[:id])
+    playfor.destroy
   end
 end

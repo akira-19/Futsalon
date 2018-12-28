@@ -8,7 +8,7 @@ class TeamsController < ApplicationController
     if team.save
       # これはOKな書き方？Playforモデルに処理を写すべき？
       PlayFor.create(player_id: current_player.id, team_id: team.id, register: true, admin: true)
-      current_player.default_team_id(team.id)
+      current_player.default_team_id_register(team.id)
 
       redirect_to root_path
     else
@@ -17,8 +17,13 @@ class TeamsController < ApplicationController
   end
 
   def show
-    member_ids = PlayFor.where(team_id: params[:id]).select(:player_id)
-    @members = Player.where(id: member_ids)
+    all_member_ids = PlayFor.where(team_id: params[:id])
+    @members = all_member_ids.where(register: true)
+    @requests = all_member_ids.where(register: false)
+    # member_ids = all_member_ids.where(register: true).select(:player_id)
+    # request_ids = all_member_ids.where(register: false).select(:player_id)
+    # @members = Player.where(id: member_ids)
+    # @request_members = Player.where(id: request_ids)
   end
 
   def edit

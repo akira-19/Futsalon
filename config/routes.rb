@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     passwords: 'players/passwords',
     registrations: 'players/registrations'
   }
-  resources :players, only: %i[show]
+  resources :players, only: %i[show update]
 
   devise_for :fields, controllers: {
     sessions: 'fields/sessions',
@@ -47,5 +47,11 @@ Rails.application.routes.draw do
       get :search, :prefecture
     end
   end
-  resources :booking_fields
+
+  resources :booking_fields do
+    collection do
+      post 'purchase'
+    end
+  end
+
 end

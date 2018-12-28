@@ -1,2 +1,43 @@
-h1 BookingFields#new
-p Find me in app/views/booking_fields/new.html.slim
+table.table.table-striped.mt-4.mx-auto style="width: 600px;"
+  thead
+    tr
+      td colspan="2" Researvation
+  tbody
+    = form_with model: @booking_field, local: true do |form|
+      tr
+        td Team
+        td = current_team(current_player).name
+      tr
+        td Field
+        td = @field_name
+      tr
+        td Date
+        td
+          - hours = []
+          - 15.times{|n| hours.push([7+n, 7+n])}
+          = form.date_field :date, value: @booking_date.strftime("%Y-%m-%d"), class:"date_form"
+          = form.select :time_begin_h, hours, {selected: @booking_time[0]}, {class:"time_form", id:"bt_h"}
+          = " : "
+          = form.select :time_begin_m, [["00",0],["30",30]], {selected: @booking_time[1]}, {class:"time_form", id:"bt_m"}
+          = " ~ "
+          = form.select :time_end_h, hours, {selected: @booking_time[0]+1}, {class:"time_form", id:"et_h"}
+          = " : "
+          = form.select :time_end_m, [["00",0],["30",30]], {selected: @booking_time[1]}, {class:"time_form", id:"et_m"}
+      tr
+        td Price
+        td#price = "#{@price} yen"
+      tr
+        td colspan="2"
+          = form_tag(action: :purchase, method: :post) do
+            script.payjp-button{"data-key" => "#{PAYJP_PUBLIC_KEY}", :src => "https://checkout.pay.jp", :type => "text/javascript"}
+
+      javascript:
+        $(function(){
+          $('#bt_h, #bt_m, #et_h, #et_m').change(function(){
+            var bt_h = $('#bt_h').val();
+            var bt_m = $('#bt_m').val();
+            var et_h = $('#et_h').val();
+            var et_m = $('#et_m').val();
+            $('#price').text(((et_h - bt_h) + (et_m - bt_m)/60)*20000 + " yen");
+          });
+        });

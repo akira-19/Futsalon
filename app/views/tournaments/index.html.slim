@@ -1,26 +1,37 @@
-p 検索ウィンドウ
-p 複数条件
-p 地域
-
-= form_with(url: search_tournaments_path, method: :get, local: true) do |form|
-  = form.label :"都道府県"
-  = form.collection_select :prefecture, Field.group(:prefecture).order(id: :desc), :prefecture, :prefecture, {prompt: ""}
-  = form.label :"日付"
-  = form.date_field :date, value: Time.now.strftime("%Y-%m-%d")
-  = form.submit :search
-
+div.container.mt-3
+  div.row
+    div.col-sm-6.offset-sm-3
+      = form_with(url: search_tournaments_path, method: :get, local: true) do |form|
+        = form.label :"都道府県"
+        = form.collection_select :prefecture, Field.group(:prefecture).order(id: :desc), :prefecture, :prefecture, {prompt: ""}
+        = form.label :"日付"
+        = form.date_field :date, value: Time.now.strftime("%Y-%m-%d")
+        = form.submit :search, class: "btn btn-primary"
 
 
 
 
 - if @tournaments
   - @tournaments.each do |t|
-    div style="border-style: solid"
-      p = "大会名：#{t.name}"
-      p = "開始日時：#{t.start_time}"
-      p = "終了日時：#{t.end_time}"
-      p = "コート名：#{Field.find_by(id: t.field_id).name}"
-      p = "開催場所：#{Field.find_by(id: t.field_id).prefecture}"
+    div.container.mt-4
+      div.row.justify-content-md-center.row-eq-height
+        div.col-sm-8.border
+          div.p-3 = "#{t.start_time.strftime("%Y/%m/%d(%a) %H:%M")} - #{t.end_time.strftime("%H:%M")}"
+          h3.pl-3 = link_to "大会名：#{t.name}", "/"
+          div.pl-3.pt-2.font-weight-light
+            span.mr-2
+              = icon('fas', 'map-marker-alt')
+            = "#{Field.find_by(id: t.field_id).prefecture} | #{Field.find_by(id: t.field_id).name}"
+          div.pl-3.pb-3.font-weight-light
+            span.mr-2
+              = icon('fas', 'hand-holding-usd')
+            = "#{t.price} yen"
+        div.col-sm-3.border
+          div test
+          hr
+          button.btn.btn-success style="width:180px;" detail
+
+
 
 br
 p 北海道・東北

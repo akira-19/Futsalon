@@ -9,4 +9,6 @@ class BookingField < ApplicationRecord
     validates :price
     validates :field_id
   end
+
+  validates_with BookingTimeValidator
 end

@@ -13,7 +13,7 @@ class Player < ApplicationRecord
   validates :email, presence: true
   validates :encrypted_password, presence: true
 
-  def default_team_id(team_id)
+  def default_team_id_register(team_id)
     self.default_team_id ||= team_id
     self.save
   end
