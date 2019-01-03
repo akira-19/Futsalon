@@ -19,4 +19,11 @@ class Field < ApplicationRecord
     validates :email
     validates :encrypted_password
   end
+
+  def self.reserved_slots(fields, date)
+    BookingField.where(field_id: fields.pluck(:id))
+                              .where("start_time >= ? AND start_time < ?", date, date + 1)
+  end
+
+
 end

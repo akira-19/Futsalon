@@ -1,5 +1,51 @@
 - if @team
-  ul
-    li = link_to "大会を探す", tournaments_path
-    li = link_to "コートを予約", fields_path
-    li = link_to "チームデータ - #{@team.name}", team_path(@team)
+  div.container.mt-5
+    div.row
+      div.col-md-4
+        div.hovereffect
+          = image_tag("field_search.jpg", class: "img-responsive w-100")
+          div.overlay
+            h2 Field
+            = link_to "search", fields_path, class:"info"
+      div.col-md-4
+        div.hovereffect
+          = image_tag("tournament_search.jpg", class: "img-responsive w-100")
+          div.overlay
+            h2 Tournament
+            = link_to "search", tournaments_path, class:"info"
+      div.col-md-4
+        div.hovereffect
+          = image_tag("team.jpg", class: "img-responsive w-100")
+          div.overlay
+            h2 Team Status
+            = link_to "#{@team.name}", team_path(@team), class:"info"
+
+
+            /
+            / <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            /     <div class="hovereffect">
+            /         <img class="img-responsive" src="http://placehold.it/350x200" alt="">
+            /         <div class="overlay">
+            /            <h2>Hover effect 1</h2>
+            /            <a class="info" href="#">link here</a>
+            /         </div>
+            /     </div>
+            / </div>
+      /
+      / div.col-md-4.border
+      /   = image_tag("field_search.jpg", class: "w-100")
+      / div.col-md-4.border
+      /   = image_tag("tournament_search.jpg",  class: "w-100")
+      / div.col-md-4.border
+      /   = image_tag("team.jpg",  class: "w-100")
+
+div.container.mt-5
+  div id="calendar"
+
+
+
+
+  / ul
+  /   li = link_to "大会を探す", tournaments_path
+  /   li = link_to "コートを予約", fields_path
+  /   li = link_to "チームデータ - #{@team.name}", team_path(@team)

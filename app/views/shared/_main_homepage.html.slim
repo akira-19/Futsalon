@@ -1,3 +1,14 @@
+/ = image_tag('top.jpg', class:"img-fluid")
+div.jumbotron.jumbotron-fluid
+  div.row style="height:300px;"
+    div.container.text-light.mx-auto.align-self-center style="width: 650px;"
+      h2.display-4 さあフットサルをしよう
+      p.lead フットサル専用SNS
+      button.btn.btn-primary.mr-3 = link_to 'ログイン', new_player_session_path, class:"text-light"
+      button.btn.btn-info = link_to 'サインアップ', new_player_registration_path, class:"text-light"
+
+
+
 
 ul
   li = link_to "feature1", feature1_path

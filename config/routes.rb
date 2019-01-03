@@ -45,12 +45,13 @@ Rails.application.routes.draw do
   resources :tournaments do
     collection do
       get :search, :prefecture
+      post :purchase
     end
   end
 
   resources :booking_fields do
     collection do
-      post 'purchase'
+      post :purchase
     end
   end
 

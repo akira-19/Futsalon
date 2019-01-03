@@ -1,1 +1,35 @@
-p building now...
+table.table.table-striped.w-50.mx-auto.mt-4
+  caption.text-center.mb-3  style="caption-side: top;"
+    span.display-4 大会詳細
+  thead
+    tr
+      td 大会
+      td = @tournament.name
+  tbody
+    tr
+      td 日時
+      td
+        span.mr-3 = @tournament.start_time.strftime("%Y/%m/%d")
+        span = @tournament.start_time.strftime("%H:%M")
+        span = " ~ "
+        span = @tournament.end_time.strftime("%H:%M")
+    tr
+      td フィールド
+      td = @tournament.field.name
+    tr
+      td 募集数
+      td
+        span 残り:
+        = "#{@tournament.num_of_team - @number_of_booking}"
+        span （募集:
+        = "#{@tournament.num_of_team}）"
+    tr
+      td 対象レベル
+      td = @tournament.level
+    tr
+      td 料金
+      td = "#{@tournament.price}円"
+    tr
+      td colspan="2"
+        = form_tag(action: :purchase, method: :post) do
+          script.payjp-button data-key="#{Rails.application.secrets.PAYJP_PUBLIC_KEY}" src="https://checkout.pay.jp" type="text/javascript"

@@ -1,0 +1,12 @@
+= form_with(url: path, method: :get, local: true) do |form|
+  = form.label :"都道府県"
+  - if @initial_data
+    = form.collection_select :prefecture, Field.group(:prefecture).order(id: :desc), :prefecture, :prefecture, {prompt: "", selected: @initial_data[:prefecture]}
+  - else
+    = form.collection_select :prefecture, Field.group(:prefecture).order(id: :desc), :prefecture, :prefecture, {prompt: ""}
+  = form.label :"日付"
+  - if @initial_data
+    = form.date_field :date, value: @initial_data[:date]
+  - else
+    = form.date_field :date, value: Time.now.strftime("%Y-%m-%d")
+  = form.submit :search, class: "btn btn-primary"

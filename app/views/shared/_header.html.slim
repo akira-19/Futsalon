@@ -1,54 +1,38 @@
-nav.navbar.navbar-dark.bg-dark
+nav.navbar.navbar-dark.bg-dark.navbar-expand-md
   = link_to 'Futsalon', root_path, class: "navbar-brand"
-  div.dropdown
-    h5 class="text-light"  data-toggle="dropdown"
-      - if player_signed_in? && current_team(current_player)
-        = current_team(current_player).name
-        span &nbsp;
-        span
-          = icon('fas', 'caret-down')
-    div.dropdown-menu
-      - if player_signed_in?
-        - if member_of_teams(current_player)
-          - member_of_teams(current_player).each do |mot|
-            div.dropdown-item
-              = form_with model: current_player, local: true do |f|
-                = hidden_field_tag :team_id, mot.id
-                = f.submit mot.name
+  div.collapse.navbar-collapse.justify-content-end
+    div.dropdown.mr-3
+      h6 class="text-light cursor_pointer"  data-toggle="dropdown"
+        - if player_signed_in? && current_team(current_player)
+          = current_team(current_player).name
+          span &nbsp;
+          span
+            = icon('fas', 'caret-down')
+      div.dropdown-menu
+        - if player_signed_in?
+          - if member_of_teams(current_player)
+            - member_of_teams(current_player).each do |mot|
+              div.dropdown-item
+                = form_with model: current_player, local: true do |f|
+                  = hidden_field_tag :team_id, mot.id
+                  = f.submit mot.name
 
-  - if player_signed_in?
-    div.dropdown
-      h5 class="text-light"  data-toggle="dropdown"
-        = current_player.name
-        span &nbsp;
-        span
-          = icon('fas', 'caret-down')
-      div.dropdown-menu.dropdown-menu-right
-        = link_to 'チームの検索', search_path, class: "dropdown-item"
-        = link_to 'チームの作成', new_team_path, class: "dropdown-item"
-        = link_to '設定', root_path, class: "dropdown-item"
-        = link_to 'ログアウト', destroy_player_session_path, method: :delete, class: "dropdown-item"
-  - else
-    ul.navbar-nav.mr-auto
-      li.nav-item.active
-        = link_to 'サインアップ', new_player_registration_path
-      li.nav-item.active
-        = link_to 'ログイン', new_player_session_path
-
-  /
-  / div.collapse.navbar-collapse#navbarsExampleDefault
-  /   ul.navbar-nav.mr-auto
-  /     - if player_signed_in?
-  /       li.nav-item.active
-  /         = link_to 'ログアウト', destroy_player_session_path, method: :delete
-  /     - elsif field_signed_in?
-  /       li.nav-item.active
-  /         = link_to 'ログアウト', destroy_field_session_path, method: :delete
-  /     - elsif tournament_company_signed_in?
-  /       li.nav-item.active
-  /         = link_to 'ログアウト', destroy_tournament_company_session_path, method: :delete
-  /     - else
-  /       li.nav-item.active
-  /         = link_to 'サインアップ', new_player_registration_path
-  /       li.nav-item.active
-  /         = link_to 'ログイン', new_player_session_path
+    - if player_signed_in?
+      div.dropdown
+        h5 class="text-light cursor_pointer"  data-toggle="dropdown"
+          = current_player.name
+          span &nbsp;
+          span
+            = icon('fas', 'caret-down')
+        div.dropdown-menu.dropdown-menu-right
+          = link_to 'チームの検索', search_path, class: "dropdown-item"
+          = link_to 'チームの作成', new_team_path, class: "dropdown-item"
+          = link_to '設定', root_path, class: "dropdown-item"
+          = link_to 'ログアウト', destroy_player_session_path, method: :delete, class: "dropdown-item"
+    - else
+      div
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            = link_to 'サインアップ', new_player_registration_path
+          li.nav-item.active
+            = link_to 'ログイン', new_player_session_path

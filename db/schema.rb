@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181227081824) do
+ActiveRecord::Schema.define(version: 20190103072959) do
 
   create_table "booking_fields", force: :cascade do |t|
     t.integer "team_id", null: false
@@ -67,13 +67,13 @@ ActiveRecord::Schema.define(version: 20181227081824) do
     t.integer "team2_id", null: false
     t.integer "score_by_team1", null: false
     t.integer "score_by_team2", null: false
-    t.integer "tounament_id"
+    t.integer "tournament_id"
     t.datetime "date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["team1_id"], name: "index_game_results_on_team1_id"
     t.index ["team2_id"], name: "index_game_results_on_team2_id"
-    t.index ["tounament_id"], name: "index_game_results_on_tounament_id"
+    t.index ["tournament_id"], name: "index_game_results_on_tournament_id"
   end
 
   create_table "play_fors", force: :cascade do |t|
@@ -151,13 +151,13 @@ ActiveRecord::Schema.define(version: 20181227081824) do
     t.datetime "start_time", null: false
     t.datetime "end_time", null: false
     t.integer "price", null: false
-    t.integer "tounament_company_id", null: false
+    t.integer "tournament_company_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "level", null: false
     t.string "name", null: false
     t.index ["field_id"], name: "index_tournaments_on_field_id"
-    t.index ["tounament_company_id"], name: "index_tournaments_on_tounament_company_id"
+    t.index ["tournament_company_id"], name: "index_tournaments_on_tournament_company_id"
   end
 
 end

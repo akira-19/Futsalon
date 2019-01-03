@@ -12,7 +12,10 @@ class Tournament < ApplicationRecord
     validates :tounament_company_id
   end
 
-
+  def self.search_tournament(fields, date)
+    where(field_id: fields.pluck(:id))
+        .where(start_time: date.beginning_of_day .. date.end_of_day)
+  end
 
 
 

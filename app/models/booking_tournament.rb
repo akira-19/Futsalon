@@ -1,5 +1,5 @@
 class BookingTournament < ApplicationRecord
-  belongs_to :tounament
+  belongs_to :tournament
   belongs_to :team
 
   with_options presence: true do

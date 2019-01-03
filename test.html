@@ -1,0 +1,995 @@
+<!-- <!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>test</title>
+    <style>
+      table {width: 400px;
+              border: 5px solid black;}
+      table tr td {border: 5px solid black;}
+      .td1 {width: 25%}
+      #td5 {width: 50%}
+      button{
+        position: relative;
+          display: inline-block;
+          padding: 0.25em 0.5em;
+          text-decoration: none;
+          color: #FFF;
+          background: #fd9535;
+          border-radius: 3px;
+          box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+          font-weight: bold;
+          border: solid 2px #d27d00;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr class="tr1">
+        <td class="td1"><button type="button" name="button">1</button></td>
+        <td class="td1"><button type="button" name="button">1</button></td>
+        <td class="td1"><button type="button" name="button">1</button></td>
+        <td class="td1"><button type="button" name="button">1</button></td>
+      </tr>
+      <tr class="tr2">
+        <td class="td1"><button type="button" name="button">1</button></td>
+        <td id="td5" colspan="2"><button type="button" name="button">1</button></td>
+        <td class="td1"><button type="button" name="button">1</button></td>
+      </tr>
+    </table>
+<br>
+    <table>
+      <tr class="tr1">
+        <td class="td1"><button type="button" name="button">1</button></td>
+        <td class="td1"><button type="button" name="button">1</button></td>
+        <td class="td1"><button type="button" name="button">1</button></td>
+        <td class="td1"><button type="button" name="button">1</button></td>
+      </tr>
+      <tr class="tr2">
+        <td class="td1"><button type="button" name="button">1</button></td>
+        <td class="td1"><button type="button" name="button">1</button></td>
+        <td class="td1"><button type="button" name="button">1</button></td>
+        <td class="td1"><button type="button" name="button">1</button></td>
+      </tr>
+    </table>
+  </body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Futsalon</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-dark">
+      <a class="navbar-brand" href="/">Futsalon</a>
+      <div class="dropdown">
+        <h5 class="text-light" data-toggle="dropdown">team1
+          <span>&nbsp;</span>
+          <span>
+            <i class="fas fa-caret-down"></i>
+          </span>
+        </h5>
+        <div class="dropdown-menu">
+          <div class="dropdown-item">
+            <form action="/players/2" accept-charset="UTF-8" method="post">
+              <input name="utf8" type="hidden" value="&#x2713;" />
+              <input type="hidden" name="_method" value="patch" />
+              <input type="hidden" name="authenticity_token" value="M66O8u1fXUicBAu2gPUi069NpuC9CPcicAyd1PABBn13e66CrWHPBMDnnpbm7lcBkX+mgjsMfjDg+zgWIPyLhQ==" />
+              <input type="hidden" name="team_id" id="team_id" value="11" />
+              <input type="submit" name="commit" value="team1" data-disable-with="team1" />
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="dropdown">
+        <h5 class="text-light" data-toggle="dropdown">example1
+          <span>&nbsp;</span>
+          <span>
+            <i class="fas fa-caret-down"></i>
+          </span>
+        </h5>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="/search">チームの検索</a>
+          <a class="dropdown-item" href="/teams/new">チームの作成</a>
+          <a class="dropdown-item" href="/">設定</a>
+          <a class="dropdown-item" rel="nofollow" data-method="delete" href="/players/sign_out">ログアウト</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container mt-3">
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+          <form action="/fields/search" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <label for="都道府県">都道府県</label>
+            <select name="prefecture">
+              <option value=""></option>
+              <option value="kanagawa">kanagawa</option>
+              <option value="shizuoka">shizuoka</option>
+              <option value="yamanashi">yamanashi</option>
+              <option value="tokyo">tokyo</option>
+              <option value="fukuoka">fukuoka</option>
+              <option value="kyoto">kyoto</option>
+              <option value="osaka">osaka</option>
+              <option value="saitama">saitama</option>
+              <option value="chiba">chiba</option>
+            </select>
+            <label for="日付">日付</label>
+            <input value="2019-01-04" type="date" name="date" />
+            <input type="submit" name="commit" value="search" class="btn btn-primary" data-disable-with="search" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <table class="mt-4 border mx-auto field_table" style="width:900px!;">
+      <tr>
+        <td colspan="30">
+          <h3 class="m-2">フィールド名：ex_filed8</h3>
+          <div class="ml-2 mb-2">city, yamanashi</div>
+        </td>
+      </tr>
+      <tr class="border text-center tr_time">
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">07:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">08:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">09:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">10:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">11:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">12:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">13:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">14:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">15:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">16:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">17:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">18:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">19:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">20:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">21:00</td>
+      </tr>
+      <tr class="border text-center">
+        <td colspan="1" style="width: 3.3333333333333335%; ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="0" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="1" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="2" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="3" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="4" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="5" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="6" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="7" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="8" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="9" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="10" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="11" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="12" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="13" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="14" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="15" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="16" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="17" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="18" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="19" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="20" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="21" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="2" style="width: 6.666666666666667%;  ">
+          <button class="square_book_btn" style="width: 100%;">team-1</button>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="24" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="25" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="26" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="27" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="28" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="29" />
+            <input type="hidden" name="field" id="field" value="8" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+      </tr>
+    </table>
+    <table class="mt-4 border mx-auto field_table" style="width:900px!;">
+      <tr>
+        <td colspan="30">
+          <h3 class="m-2">フィールド名：ex_filed9</h3>
+          <div class="ml-2 mb-2">city, shizuoka</div>
+        </td>
+      </tr>
+      <tr class="border text-center tr_time">
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">07:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">08:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">09:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">10:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">11:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">12:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">13:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">14:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">15:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">16:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">17:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">18:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">19:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">20:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">21:00</td>
+      </tr>
+      <tr class="border text-center">
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="0" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="2" style="width: 6.666666666666667%;  ">
+          <button class="square_book_btn" style="width: 100%;">team-8</button>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="3" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="4" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="5" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="6" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="7" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="8" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="9" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="10" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="11" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="12" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="13" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="14" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="15" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="16" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="17" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="18" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="19" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="20" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="21" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="22" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="23" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="24" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="25" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="26" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="27" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="28" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="29" />
+            <input type="hidden" name="field" id="field" value="9" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+      </tr>
+    </table>
+    <table class="mt-4 border mx-auto field_table" style="width:900px!;">
+      <tr>
+        <td colspan="30">
+          <h3 class="m-2">フィールド名：ex_filed10</h3>
+          <div class="ml-2 mb-2">city, kanagawa</div>
+        </td>
+      </tr>
+      <tr class="border text-center tr_time">
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">07:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">08:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">09:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">10:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">11:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">12:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">13:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">14:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">15:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">16:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">17:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">18:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">19:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">20:00</td>
+        <td class="border" colspan="2" style="width: 6.666666666666667%;">21:00</td>
+      </tr>
+      <tr class="border text-center">
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="0" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="1" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="2" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="3" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="4" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="5" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="6" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="7" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="8" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="9" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="10" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="11" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="12" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="13" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="14" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="15" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="16" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="17" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="18" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="19" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="20" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="21" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="22" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="23" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="24" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="25" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="26" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="27" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="28" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+        <td colspan="1" style="width: 3.3333333333333335%;  ">
+          <form class="form_test" action="/booking_fields/new" accept-charset="UTF-8" method="get">
+            <input name="utf8" type="hidden" value="&#x2713;" />
+            <input type="hidden" name="date" id="date" value="2019-01-04" />
+            <input type="hidden" name="time" id="time" value="29" />
+            <input type="hidden" name="field" id="field" value="10" />
+            <input type="submit" name="commit" value="○" class="square_btn" data-disable-with="○" />
+          </form>
+        </td>
+      </tr>
+    </table>
+
+
+  </body>
+</html>

@@ -1,65 +1,34 @@
 div.container.mt-3
   div.row
     div.col-sm-6.offset-sm-3
-      = form_with(url: search_fields_path, method: :get, local: true) do |form|
-        = form.label :"都道府県"
-        - if @initial_data
-          = form.collection_select :prefecture, Field.group(:prefecture).order(id: :desc), :prefecture, :prefecture, {prompt: "", selected: @initial_data[:prefecture]}
-        - else
-          = form.collection_select :prefecture, Field.group(:prefecture).order(id: :desc), :prefecture, :prefecture, {prompt: ""}
-        = form.label :"日付"
-        - if @initial_data
-          = form.date_field :date, value: @initial_data[:date]
-        - else
-          = form.date_field :date, value: Time.now.strftime("%Y-%m-%d")
-        = form.submit :search, class: "btn btn-primary"
+      = render 'shared/search_box', path: search_fields_path
+
 
 
 - if @colspan_array
   - @colspan_array.each do |ca|
-    table.mt-4.border.mx-auto style="width:900px!;"
+    table.mt-5.border.mx-auto class="field_table" style="width: 900px !important;"
       tr
         td colspan="30"
           h3.m-2 = "フィールド名：#{Field.find_by(id: ca[0]).name}"
           div.ml-2.mb-2 = "#{Field.find_by(id: ca[0]).city}, #{Field.find_by(id: ca[0]).prefecture}"
+
       tr.border.text-center.tr_time
         - (1..15).each do |n|
-          td.border colspan="2" style="width: #{100/15}%;"
+          td.border colspan="2" style="width: #{(100.0/15.0)}%;"
             = (Time.new.beginning_of_day + (6+n).hours).strftime("%H:%M")
+            / [field_id, [colspan, team_name]]
       tr.border.text-center
         - @cum_time = 0
         - ca[1].each do |ca_one|
-          td colspan=ca_one[0] style="width: #{ca_one[0]/30*100}%; font-size:14px;"
+          td colspan=ca_one[0] style="width: #{ca_one[0]/30.0*100}%; font-size:14px;"
             - if ca_one[1] == '○'
-              / = link_to new_booking_field_path do
-              /   button.square_btn = ca_one[1]
-              = form_with(url: new_booking_field_path, method: :get, local: true) do |form|
+              = form_with(url: new_booking_field_path, method: :get, local: true, class:"form_test") do |form|
                 = hidden_field_tag :date, @initial_data[:date]
                 = hidden_field_tag :time, @cum_time
                 = hidden_field_tag :field, ca[0]
-                / = hidden_field_tag :team_id, current_team(current_player)
                 = form.submit "#{ca_one[1]}", class:"square_btn"
               - @cum_time += ca_one[0]
             - else
               button.square_book_btn style="width: 100%;" = ca_one[1]
               - @cum_time += ca_one[0]
-
-
-
-    / div.container
-    /   div.row.justify-content-center.border.mt-4
-    /     div.col-md-8
-    /       h3.m-2 = "フィールド名：#{Field.find_by(id: ca[0]).name}"
-    /       div.ml-2 = "#{Field.find_by(id: ca[0]).city}, #{Field.find_by(id: ca[0]).prefecture}"
-    /       table.mt-4
-    /         tr style="border-style: solid"
-    /           - (1..15).each do |n|
-    /             td style="border-style: solid" colspan="2"
-    /               = (Time.new.beginning_of_day + (6+n).hours).strftime("%H:%M")
-    /         tr style="border-style: solid"
-    /           - ca[1].each do |ca_one|
-    /             td colspan=ca_one[0] style="border-style: solid"
-    /               - if ca_one[1] == '○'
-    /                 = link_to ca_one[1], '/'
-    /               - else
-    /                 = ca_one[1]
