@@ -1,36 +1,36 @@
-table.table.table-striped.mt-4.mx-auto style="width: 600px;"
-  thead
-    tr
-      td colspan="2" Researvation
-  tbody
-    tr
-      td Team
-      td = current_team(current_player).name
-    tr
-      td Field
-      td = @field_name
-    tr
-      td Date
-      td
-        - hours = []
-        - 15.times{|n| hours.push([7+n, 7+n])}
-        = form_with model: @booking_field, local: true do |form|
-          = form.date_field :date, value: @booking_date.strftime("%Y-%m-%d"), class:"date_form"
-          = form.select :time_begin_h, hours, {selected: @booking_time[0]}, {class:"time_form", id:"bt_h"}
+= form_tag(action: :purchase, method: :post) do
+  table.table.table-striped.mt-4.mx-auto style="width: 600px;"
+    thead
+      tr
+        td colspan="2" Researvation
+    tbody
+      tr
+        td Team
+        td = current_team(current_player).name
+      tr
+        td Field
+        td = @field.name
+      tr
+        td Date
+        td
+          - hours = []
+          - 15.times{|n| hours.push([7+n, 7+n])}
+          = date_field_tag :date, @booking_date.strftime("%Y-%m-%d"), class:"date_form"
+          = select_tag(:time_begin_h, options_for_select(hours, selected: @booking_time[0]), {class:"time_form", id:"bt_h"})
           = " : "
-          = form.select :time_begin_m, [["00",0],["30",30]], {selected: @booking_time[1]}, {class:"time_form", id:"bt_m"}
+          = select_tag(:time_begin_m, options_for_select([["00",0],["30",30]], selected: @booking_time[1]), {class:"time_form", id:"bt_m"})
           = " ~ "
-          = form.select :time_end_h, hours, {selected: @booking_time[0]+1}, {class:"time_form", id:"et_h"}
+          = select_tag(:time_end_h, options_for_select(hours, selected: @booking_time[0]+1), {class:"time_form", id:"et_h"})
           = " : "
-          = form.select :time_end_m, [["00",0],["30",30]], {selected: @booking_time[1]}, {class:"time_form", id:"et_m"}
-    tr
-      td Price
-      td#price = "#{@price} yen"
-    tr
-      td colspan="2"
-        = form_tag(action: :purchase, method: :post) do
+          = select_tag(:time_end_m, options_for_select([["00",0],["30",30]], selected: @booking_time[1]), {class:"time_form", id:"et_m"})
+          = hidden_field_tag :team, current_team(current_player).id
+          = hidden_field_tag :field, @field.id
+      tr
+        td Price
+        td#price = "#{@price} yen"
+      tr
+        td colspan="2"
           script.payjp-button data-key="#{Rails.application.secrets.PAYJP_PUBLIC_KEY}" src="https://checkout.pay.jp" type="text/javascript"
-          = hidden_field_tag :price, value: @price
 
 javascript:
   $(function(){

@@ -1,4 +1,4 @@
-table.table.table-striped.w-50.mx-auto.mt-4
+table.table.table-striped.w-50.mx-auto.mt-4.mb-5
   caption.text-center.mb-3  style="caption-side: top;"
     span.display-4 大会詳細
   thead
@@ -31,5 +31,5 @@ table.table.table-striped.w-50.mx-auto.mt-4
       td = "#{@tournament.price}円"
     tr
       td colspan="2"
-        = form_tag(action: :purchase, method: :post) do
-          script.payjp-button data-key="#{Rails.application.secrets.PAYJP_PUBLIC_KEY}" src="https://checkout.pay.jp" type="text/javascript"
+        = form_tag({action: :purchase, method: :post}, "data-turbolinks" => "false") do
+          script.payjp-button#event data-key="#{Rails.application.secrets.PAYJP_PUBLIC_KEY}" src="https://checkout.pay.jp" type="text/javascript"

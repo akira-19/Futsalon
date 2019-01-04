@@ -37,6 +37,7 @@ gem 'coffee-rails', '~> 4.2'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
 # Used to speed up page transition by using ajax and replace only body
 gem 'turbolinks', '~> 5'
+gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease from DSL (Domestic specific language). Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'

@@ -26,4 +26,4 @@ div.container.mt-3
               span.text-info.font-weight-bold = "#{ t.num_of_team - @number_of_booking[t.id]}"
           div.h-50.w-80.mx-auto.row.border-top
             div.my-auto.col-md-12.text-center
-              = link_to "詳細", tournament_path(t), class:"w-75 btn btn-success text-decoration-none text-light"
+              = link_to "詳細", tournament_path(t), class:"w-75 btn btn-success text-decoration-none text-light", "data-turbolinks" => "false"

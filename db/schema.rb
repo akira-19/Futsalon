@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190103072959) do
+ActiveRecord::Schema.define(version: 20190104065753) do
 
   create_table "booking_fields", force: :cascade do |t|
     t.integer "team_id", null: false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20190103072959) do
     t.string "prefecture"
     t.string "city"
     t.integer "num_of_field"
-    t.string "price"
+    t.integer "price"
     t.index ["confirmation_token"], name: "index_fields_on_confirmation_token", unique: true
     t.index ["email"], name: "index_fields_on_email", unique: true
     t.index ["reset_password_token"], name: "index_fields_on_reset_password_token", unique: true
