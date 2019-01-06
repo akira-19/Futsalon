@@ -21,6 +21,7 @@ class Field < ApplicationRecord
   end
 
   def self.reserved_slots(fields, date)
+    # Booking_fieldでスコープ、クラスメソッド への検討
     BookingField.where(field_id: fields.pluck(:id))
                               .where("start_time >= ? AND start_time < ?", date, date + 1)
   end

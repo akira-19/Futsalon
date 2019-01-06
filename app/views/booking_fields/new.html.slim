@@ -15,6 +15,7 @@
         td
           - hours = []
           - 15.times{|n| hours.push([7+n, 7+n])}
+          # 好みで@booking_date.strftime("%Y-%m-%d")をコントローラへ移動してもいいかも
           = date_field_tag :date, @booking_date.strftime("%Y-%m-%d"), class:"date_form"
           = select_tag(:time_begin_h, options_for_select(hours, selected: @booking_time[0]), {class:"time_form", id:"bt_h"})
           = " : "

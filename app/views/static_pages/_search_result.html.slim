@@ -1,6 +1,8 @@
 ul
   - if @search_teams
     - @search_teams.each do |team|
+      # viewでfind_byを使わない
+      # PlayerFor.allで取得したオブジェクトからsearchする
       - if play_for = PlayFor.find_by(player_id: current_player.id, team_id: team.id)
         li = "#{team.name}"
         - if play_for.register

@@ -51,4 +51,5 @@ class TournamentsController < ApplicationController
   def prefecture
   end
 
+  # ストロングパラメータ
 end

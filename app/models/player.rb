@@ -15,6 +15,7 @@ class Player < ApplicationRecord
 
   def default_team_id_register(team_id)
     self.default_team_id ||= team_id
+    # なぜsaveする必要があるのか？
     self.save
   end
 

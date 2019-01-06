@@ -7,6 +7,7 @@ class TeamsController < ApplicationController
     team = Team.new(team_params)
     if team.save
       # これはOKな書き方？Playforモデルに処理を写すべき？
+      # createの失敗時の処理がないが大丈夫か？
       PlayFor.create(player_id: current_player.id, team_id: team.id, register: true, admin: true)
       current_player.default_team_id_register(team.id)
 

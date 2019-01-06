@@ -22,8 +22,9 @@ module ApplicationHelper
   end
 
   def member_of_teams(player)
-    playfor_team_id = PlayFor.where(player_id: player.id).pluck(:team_id)
-    Team.where(id: playfor_team_id)
+    PlayFor.getTeamIdFromPlayer(player).team->モデルで定義
+    # または
+    PlayFor.getTeamFromPlayer(player)
   end
 
 end

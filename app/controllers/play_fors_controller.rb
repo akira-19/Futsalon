@@ -13,7 +13,7 @@ class PlayForsController < ApplicationController
   end
 
   def update
-    playfor = PlayFor.find_by(id: params[:id])
+    playfor = PlayFor.find(params[:id]) # 似たような処理でfindに置き換えられないか
     playfor.register = params[:register]
     if playfor.save
       redirect_to root_path
@@ -24,4 +24,6 @@ class PlayForsController < ApplicationController
     playfor = PlayFor.find_by(id: params[:id])
     playfor.destroy
   end
+
+  # ストロングパラメータ
 end

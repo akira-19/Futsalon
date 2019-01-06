@@ -8,12 +8,13 @@ div.container.mt-3
     div.container.mt-4
       div.row.justify-content-md-center.row-eq-height
         div.col-sm-8.border
+          # 好みでメソッド化
           div.p-3 = "#{t.start_time.strftime("%Y/%m/%d(%a) %H:%M")} - #{t.end_time.strftime("%H:%M")}"
           h3.pl-3 = link_to "大会名：#{t.name}", tournament_path(t)
           div.pl-3.pt-2.font-weight-light
             span.mr-2
               = icon('fas', 'map-marker-alt')
-            = "#{Field.find_by(id: t.field_id).prefecture} | #{Field.find_by(id: t.field_id).name}"
+            = "#{t.field.prefecture} | #{t.field.name}"
           div.pl-3.pb-3.font-weight-light
             span.mr-2
               = icon('fas', 'hand-holding-usd')
@@ -23,6 +24,7 @@ div.container.mt-3
             div.my-auto.col-md-12.text-center
               span 残り
               span &nbsp;
+              # 好みでメソッド化
               span.text-info.font-weight-bold = "#{ t.num_of_team - @number_of_booking[t.id]}"
           div.h-50.w-80.mx-auto.row.border-top
             div.my-auto.col-md-12.text-center

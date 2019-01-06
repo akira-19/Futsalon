@@ -8,6 +8,8 @@ class FieldsController < ApplicationController
 
   def search
     # parameters that are from form_with
+
+    # できればメソッドかしたい
     @fields = params[:prefecture].empty? ? Field.all : Field.where(prefecture: params[:prefecture])
     date = params[:date].to_date
 
@@ -28,11 +30,12 @@ class FieldsController < ApplicationController
           cond_array = []
           time = date.in_time_zone + 6.hours + (30 * (n + 1)).minutes
 
-          get_booking_info(booking_array, time, team_name_array, cond_array)
+          team_name_array = get_booking_tearm_name
+          cond_array = get_bookiing_cond
 
-          create_booking_info_array(cond_array, team_name_array)
+          team_name_and_time = create_booking_info_array(cond_array, team_name_array)
 
-          get_colspan_array_component(cond_array, colspan_array_component, @team_name_and_time)
+          get_colspan_array_component(cond_array, colspan_array_component, team_name_and_time)
 
         end
       else
@@ -49,6 +52,7 @@ class FieldsController < ApplicationController
 
   private
     #get team name and condition(the value of colspan) arrays.
+    # get_booking_tearm_nameとget_bookiing_condに分けるとか->２つの処理が混在しているので
     def get_booking_info(booking_array, time, team_name_array, cond_array)
       booking_array.each do |b_ary|
         if time == b_ary.start_time
@@ -69,7 +73,7 @@ class FieldsController < ApplicationController
       cond_array.each do |ca|
         unless (ca == 0) or (ca == 100)
           time_index = cond_array.find_index ca
-          @team_name_and_time = [ca, team_name_array[time_index]]
+          team_name_and_time = [ca, team_name_array[time_index]]
         end
       end
     end
@@ -85,4 +89,5 @@ class FieldsController < ApplicationController
       end
     end
 
+    # ストロングパラメータを使用した方が良い
 end
