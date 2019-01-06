@@ -13,7 +13,9 @@ class Tournament < ApplicationRecord
   end
 
   def self.search_tournament(fields, date)
-    where(field_id: fields.pluck(:id))
+    # それぞれのwhereをスコープで定義した方が良い
+    # オブジェクトから特定のパラメータの配列を作成する場合はmapの方が良い
+    where(field_id: fields.map(&:id))
         .where(start_time: date.beginning_of_day .. date.end_of_day)
   end
 

@@ -10,6 +10,8 @@ div.container.mt-3
     table.mt-5.border.mx-auto class="field_table" style="width: 900px !important;"
       tr
         td colspan="30"
+          # 以下の処理でFieldテーブルに3回アクセスしているので１回にまとめる->パフォーマンスに影響するのでDBへのアクセスはなるべく少なくする
+          # viewでfind_byは使用せずヘルパー等でメソッド定義したようがよい
           h3.m-2 = "フィールド名：#{Field.find_by(id: ca[0]).name}"
           div.ml-2.mb-2 = "#{Field.find_by(id: ca[0]).city}, #{Field.find_by(id: ca[0]).prefecture}"
 
@@ -19,7 +21,7 @@ div.container.mt-3
             = (Time.new.beginning_of_day + (6+n).hours).strftime("%H:%M")
             / [field_id, [colspan, team_name]]
       tr.border.text-center
-        - @cum_time = 0
+        - @cum_time = 0 # cum_timeをインスタンスメソッドにする意味は？
         - ca[1].each do |ca_one|
           td colspan=ca_one[0] style="width: #{ca_one[0]/30.0*100}%; font-size:14px;"
             - if ca_one[1] == '○'

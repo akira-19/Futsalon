@@ -8,4 +8,6 @@ class PlayersController < ApplicationController
     player.save
     redirect_to root_path
   end
+
+  # ストロングパラメータ
 end

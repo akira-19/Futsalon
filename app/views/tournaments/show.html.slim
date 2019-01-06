@@ -20,6 +20,7 @@ table.table.table-striped.w-50.mx-auto.mt-4.mb-5
       td 募集数
       td
         span 残り:
+        # 好みでメソッド化
         = "#{@tournament.num_of_team - @number_of_booking}"
         span （募集:
         = "#{@tournament.num_of_team}）"
