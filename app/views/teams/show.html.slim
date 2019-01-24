@@ -1,24 +1,60 @@
-h2 Player list
-table border="1px black solid"
-  tr
-    td Name
-    td Number
-    td Position
-  tr
-    - @members.each do |member|
-      td = member.player.name
-      td member.player.number
-      td member.player.position
+div.container.border.mt-5
+  h2 New Information
+  - if team_admin_player?(current_player.id, params[:id])
+    - if !@requests.empty?
+      - @requests.each do |r|
+        = "#{r.player.name}さんからリクエストが来ています。"
+        = form_with model: r, local: true do |form|
+          = hidden_field_tag :register, true
+          = form.submit "承認", class: "btn btn-primary"
+        = form_with(model: r, html: { method: :delete }, local: true) do |form|
+          = form.submit "リクエストを却下する", class: "btn btn-primary"
+    - else
+      span ありません。
+  - else
+      span ありません。
 
-- if team_admin_player?(current_player.id, params[:id])
-  h2 admin
-  - if @requests
-    - @requests.each do |r|
-      = "#{r.player.name}さんからリクエストが来ています。"
-      = form_with model: r, local: true do |form|
-        = hidden_field_tag :register, true
-        = form.submit "承認", class: "btn btn-primary"
-      = form_with(model: r, html: { method: :delete }, local: true) do |form|
-        = form.submit "リクエストを却下する", class: "btn btn-primary"
-- else
-  h2 not_admin
+div.container.mt-5
+  h2 Player list
+div.container.mt-4
+  h2.border-bottom Goleiro
+  = render partial: "teams/playersInPosition", locals: {players: @gole_array}
+div.container.mt-5
+  h2.border-bottom Fixo
+  = render partial: "teams/playersInPosition", locals: {players: @fixo_array}
+div.container.mt-5
+  h2.border-bottom Ala
+  = render partial: "teams/playersInPosition", locals: {players: @ala_array}
+div.container.mt-5
+  h2.border-bottom Pivo
+  = render partial: "teams/playersInPosition", locals: {players: @pivo_array}
+
+
+
+
+
+
+
+/ table border="1px black solid"
+/   tr
+/     td Name
+/     td Number
+/     td Position
+/   tr
+/     - @members.each do |member|
+/       td = member.player.name
+/       td member.player.number
+/       td member.player.position
+/
+/ - if team_admin_player?(current_player.id, params[:id])
+/   h2 admin
+/   - if @requests
+/     - @requests.each do |r|
+/       = "#{r.player.name}さんからリクエストが来ています。"
+/       = form_with model: r, local: true do |form|
+/         = hidden_field_tag :register, true
+/         = form.submit "承認", class: "btn btn-primary"
+/       = form_with(model: r, html: { method: :delete }, local: true) do |form|
+/         = form.submit "リクエストを却下する", class: "btn btn-primary"
+/ - else
+/   h2 not_admin

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'players/team_register'
 
   root 'static_pages#home'
+  get '/index', to: 'static_pages#home'
   get '/search', to: 'static_pages#search'
 
   devise_for :players, controllers: {

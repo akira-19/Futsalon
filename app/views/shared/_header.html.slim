@@ -27,7 +27,7 @@ nav.navbar.navbar-dark.bg-dark.navbar-expand-md
         div.dropdown-menu.dropdown-menu-right
           = link_to 'チームの検索', search_path, class: "dropdown-item"
           = link_to 'チームの作成', new_team_path, class: "dropdown-item"
-          = link_to '設定', root_path, class: "dropdown-item"
+          = link_to '設定', edit_player_registration_path, class: "dropdown-item"
           = link_to 'ログアウト', destroy_player_session_path, method: :delete, class: "dropdown-item"
     - else
       div

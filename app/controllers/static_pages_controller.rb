@@ -4,8 +4,8 @@ class StaticPagesController < ApplicationController
     if player_signed_in?
       team_ids = PlayFor.where(player_id: current_player.id).pluck(:team_id)
       @teams = Team.where(id: team_ids)
-      default_team = current_player.default_team_id
-      @team = Team.find_by(id: default_team)
+      @team = Team.find(current_player.default_team_id)
+      @events = BookingField.where(team_id: @team.id)
     end
   end
 

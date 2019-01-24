@@ -1,7 +1,7 @@
 class TournamentsController < ApplicationController
 
   def index
-    @tournaments = Tournament.all.order(:start_time)
+    @tournaments = Tournament.all.order(:start_time).page(params[:page]).per(15)
     @number_of_booking = {}
     @tournaments.each do |t|
       count = BookingTournament.where(tournament_id: t.id).count
@@ -32,7 +32,7 @@ class TournamentsController < ApplicationController
   def search
     fields = params[:prefecture].empty? ? Field.all : Field.where(prefecture: params[:prefecture])
     date = params[:date].to_date
-    @tournaments = Tournament.search_tournament(fields, date)
+    @tournaments = Tournament.search_tournament(fields, date).page(params[:page]).per(15)
     @initial_data = {prefecture: params[:prefecture], date: params[:date]}
     @number_of_booking = {}
     @tournaments.each do |t|

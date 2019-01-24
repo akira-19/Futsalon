@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190104065753) do
+ActiveRecord::Schema.define(version: 20190110225252) do
 
   create_table "booking_fields", force: :cascade do |t|
     t.integer "team_id", null: false
@@ -83,6 +83,9 @@ ActiveRecord::Schema.define(version: 20190104065753) do
     t.datetime "updated_at", null: false
     t.boolean "register", default: false, null: false
     t.boolean "admin", default: false, null: false
+    t.string "name"
+    t.string "position"
+    t.integer "number"
     t.index ["player_id"], name: "index_play_fors_on_player_id"
     t.index ["team_id"], name: "index_play_fors_on_team_id"
   end

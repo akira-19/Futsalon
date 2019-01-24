@@ -7,8 +7,7 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     / = stylesheet_link_tag "custom", :media => "all"
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
-  body
-    = render 'shared/header'
-    = yield
-    / = debug(params) if Rails.env.development?
-    = render 'shared/footer'
+  body.d-flex.flex-column style="min-height: 100vh;"
+    div = render 'shared/header'
+    div.mb-auto = yield
+    div.mt-5 = render 'shared/footer'

@@ -27,3 +27,5 @@ div.container.mt-3
           div.h-50.w-80.mx-auto.row.border-top
             div.my-auto.col-md-12.text-center
               = link_to "詳細", tournament_path(t), class:"w-75 btn btn-success text-decoration-none text-light", "data-turbolinks" => "false"
+div.mt-4.w-50.mx-auto
+  = paginate @tournaments

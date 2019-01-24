@@ -1,0 +1,19 @@
+- players.each do |ply_arr|
+  div.row.justify-content-around
+    - ply_arr.each do |pa|
+      - if pa
+        div.col-md-3.col-sm-6.mt-4
+          div.card style="width:220px;"
+            = gravatar_for(pa.player)
+            div.card-body
+              div
+                div.float-left
+                  span.card-name = "#{pa.name}"
+                  br
+                  span = "height: #{pa.player.height}cm"
+                  br
+                  span = "height: #{pa.player.weight}kg"
+                div.float-right.card-number = "#{pa.number}"
+      - else
+        div.col-md-3.col-sm-6.invisible
+          div.card style="width:220px;"

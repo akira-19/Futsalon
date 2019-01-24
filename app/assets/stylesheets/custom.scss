@@ -35,7 +35,7 @@ input {
 }
 
 // top page unlogined
-.jumbotron {
+.jumbotron.topjumbo {
   background-image: url("top.jpg");
   background-size: cover;
   background-position: center;
@@ -209,7 +209,11 @@ input {
 }
 
 .tr_time{
-  background: rgba(154, 213, 228, 0.71)
+  background: rgba(154, 213, 228, 0.71);
+}
+
+.top-exp{
+  background: rgba(200, 200, 200, 0.7);
 }
 
 
@@ -224,4 +228,20 @@ input {
 .time_form{
     width: 50px;
     background: white;
+}
+
+// team show
+.gravatar{
+  width: 100%;
+}
+
+.card-name{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.card-number{
+  font-size: 60px;
+  font-family: Impact, Charcoal, sans-serif;
+  color: rgb(161, 161, 161);
 }

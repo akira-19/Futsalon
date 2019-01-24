@@ -3,8 +3,6 @@ div.container.mt-3
     div.col-sm-6.offset-sm-3
       = render 'shared/search_box', path: search_fields_path
 
-
-
 - if @colspan_array
   - @colspan_array.each do |ca|
     table.mt-5.border.mx-auto class="field_table" style="width: 900px !important;"
@@ -32,3 +30,5 @@ div.container.mt-3
             - else
               button.square_book_btn style="width: 100%;" = ca_one[1]
               - @cum_time += ca_one[0]
+  div.mt-4.w-50.mx-auto
+    = paginate @colspan_array

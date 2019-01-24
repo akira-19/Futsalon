@@ -5,7 +5,7 @@ class PlayForsController < ApplicationController
   def create
     @play_for = PlayFor.new
     @play_for.player_id = current_player.id
-    @play_for.team_id = params[:team]
+    @play_for.team_id = play_for_params[:team].to_i
     @play_for.save
   end
 
@@ -24,4 +24,9 @@ class PlayForsController < ApplicationController
     playfor = PlayFor.find_by(id: params[:id])
     playfor.destroy
   end
+
+  private
+    def play_for_params
+      params.permit(:team)
+    end
 end

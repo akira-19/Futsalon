@@ -16,9 +16,7 @@
 //= require rails-ujs
 //= require jquery.turbolinks
 //= require turbolinks
-//= require_tree .
 //= require moment
 //= require fullcalendar
 //= require fullcalendar/locale-all
-
-$('#calendar').fullCalendar({});
+//= require_tree .
